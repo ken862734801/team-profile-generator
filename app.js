@@ -1,3 +1,10 @@
+const inquirer = require('inquirer');
+const fs = require('fs');
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+
+let team = [];
 
 const managerQuestions = [
     {
@@ -24,6 +31,12 @@ const managerQuestions = [
         type: "input",
         name: "office",
         message: "What is the manager's office number?"
+    },
+    {
+        type: "list",
+        name: "member",
+        message: "Would you like to add another team member?",
+        choices: ["Engineer", "Intern", "Exit"]
     }
 ];
 
@@ -50,8 +63,14 @@ const engineerQuestions = [
     },
     {
         type: "input",
-        name: "office",
+        name: "github",
         message: "What is the engineer's GitHub username?"
+    },
+    {
+        type: "list",
+        name: "member",
+        message: "Would you like to add another team member?",
+        choices: ["Engineer", "Intern", "Exit"]
     }
 ];
 const internQuestions = [
@@ -77,7 +96,47 @@ const internQuestions = [
     },
     {
         type: "input",
-        name: "office",
-        message: "Which university does the intern attend?"
+        name: "school",
+        message: "What is the name of the intern's university?"
+    },
+    {
+        type: "list",
+        name: "member",
+        message: "Would you like to add another team member?",
+        choices: ["Engineer", "Intern", "Exit"]
     }
 ];
+
+function createManagerProfile (){
+    inquirer.prompt(managerQuestions)
+        .then(function(response){
+            const manager = new Manager(response.fName, response.lName, response.id, response.email, response.office);
+            team.push(manager);
+        })
+};
+
+function createInternProfile (){
+    inquirer.prompt(internQuestions)
+        .then(function(response){
+            const intern = new Intern(response.fName, response.lName, response.id, response.email, response.school);
+            team.push(intern);
+        })
+};
+
+function createEngineerProfile (){
+        inquirer.prompt(engineerQuestions)
+            .then(function(response){
+                const engineer = new Engineer(response.fName, response.lName, response.id, response.email, response.github);
+                team.push(engineer)
+            })
+};
+
+function determineUserChoice (choice){
+    if(choice === "Engineer"){
+        createEngineerProfile();
+    }else if(choice === "Intern"){
+        createInternProfile();
+    }else{
+        return
+    }
+};
