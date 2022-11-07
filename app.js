@@ -107,30 +107,6 @@ const internQuestions = [
     }
 ];
 
-function createManagerProfile (){
-    inquirer.prompt(managerQuestions)
-        .then(function(response){
-            const manager = new Manager(response.fName, response.lName, response.id, response.email, response.office);
-            team.push(manager);
-        })
-};
-
-function createInternProfile (){
-    inquirer.prompt(internQuestions)
-        .then(function(response){
-            const intern = new Intern(response.fName, response.lName, response.id, response.email, response.school);
-            team.push(intern);
-        })
-};
-
-function createEngineerProfile (){
-        inquirer.prompt(engineerQuestions)
-            .then(function(response){
-                const engineer = new Engineer(response.fName, response.lName, response.id, response.email, response.github);
-                team.push(engineer)
-            })
-};
-
 function determineUserChoice (choice){
     if(choice === "Engineer"){
         createEngineerProfile();
@@ -140,3 +116,32 @@ function determineUserChoice (choice){
         return
     }
 };
+
+function createManagerProfile (){
+    inquirer.prompt(managerQuestions)
+        .then(function(response){
+            const manager = new Manager(response.fName, response.lName, response.id, response.email, response.office);
+            team.push(manager);
+            determineUserChoice();
+        })
+};
+
+function createInternProfile (){
+    inquirer.prompt(internQuestions)
+        .then(function(response){
+            const intern = new Intern(response.fName, response.lName, response.id, response.email, response.school);
+            team.push(intern);
+            determineUserChoice();
+        })
+};
+
+function createEngineerProfile (){
+        inquirer.prompt(engineerQuestions)
+            .then(function(response){
+                const engineer = new Engineer(response.fName, response.lName, response.id, response.email, response.github);
+                team.push(engineer);
+                determineUserChoice();
+            })
+};
+
+createManagerProfile();
