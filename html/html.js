@@ -1,7 +1,3 @@
-const Manager = require("../lib/manager");
-const Engineer = require("../lib/engineer");
-const Intern = require("../lib/intern");
-const Employee = require("../lib/employee");
 
 function generateHTML (team) {
 
@@ -43,8 +39,8 @@ function generateHTML (team) {
 
 function generateManagerCard(employee){
 
-    let firstInitial = employee.firstName.substring(0,1);
-    let secondInitial = employee.lastName.substring(0,1);
+    let firstInitial = employee.firstName.substring(0,1).toUpperCase();
+    let secondInitial = employee.lastName.substring(0,1).toUpperCase();
 
   return `<div class="card shadow m-2" style = "min-width: 17rem;">
     <div class="card-header p-3" style="background-color:white;">
@@ -83,13 +79,13 @@ function generateManagerCard(employee){
 
 function generateEngineerCard(employee){
 
-    let firstInitial = employee.firstName.substring(0,1);
-    let secondInitial = employee.lastName.substring(0,1);
+    let firstInitial = employee.firstName.substring(0,1).toUpperCase();
+    let secondInitial = employee.lastName.substring(0,1).toUpperCase();
     
     return `<div class="card shadow m-2" style = "min-width: 17rem;">
     <div class="card-header p-3" style="background-color:white;">
         <div class="d-flex profile-picture rounded-circle" style="background-color:rgb(206, 252, 255); width:80px; height:80px; margin: 6px auto; justify-content: center; align-items: center;">
-        <p style="font-size:1.75em; font-weight:bold; color: rgb(165, 132, 85) ;margin-top:14px;">${firstInitial + secondInitial}</p>
+        <p style="font-size:1.75em; font-weight:bold; color: rgb(31, 119, 119) ;margin-top:14px;">${firstInitial + secondInitial}</p>
         </div>
         <p class="text-center" style="margin-top:8px; font-weight:bold;">${employee.firstName + employee.lastName}</p>
         <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">${employee.getRole()}</p>
@@ -122,13 +118,13 @@ function generateEngineerCard(employee){
 
 function generateInternCard(employee){
 
-    let firstInitial = employee.firstName.substring(0,1);
-    let secondInitial = employee.lastName.substring(0,1);
+    let firstInitial = employee.firstName.substring(0,1).toUpperCase();
+    let secondInitial = employee.lastName.substring(0,1).toUpperCase();
 
     return `<div class="card shadow m-2" style = "min-width: 17rem;">
     <div class="card-header p-3" style="background-color:white;">
         <div class="d-flex profile-picture rounded-circle" style="background-color:rgb(228, 231, 231); width:80px; height:80px; margin: 6px auto; justify-content: center; align-items: center;">
-        <p style="font-size:1.75em; font-weight:bold; color: rgb(165, 132, 85) ;margin-top:14px;">${firstInitial + secondInitial}</p>
+        <p style="font-size:1.75em; font-weight:bold; color: rgb(140, 143, 143) ;margin-top:14px;">${firstInitial + secondInitial}</p>
         </div>
         <p class="text-center" style="margin-top:8px; font-weight:bold;">${employee.firstName + employee.lastName}</p>
         <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">${employee.getRole()}</p>
@@ -159,3 +155,5 @@ function generateInternCard(employee){
 </div>`
 
 }
+
+module.exports = generateHTML;

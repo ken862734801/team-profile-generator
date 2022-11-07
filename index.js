@@ -3,6 +3,7 @@ const fs = require('fs');
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const generateHTML = require("./html/html");
 
 let team = [];
 
@@ -114,6 +115,7 @@ function determineUserChoice (choices){
         createInternProfile();
     }else if(choices === "Exit"){
         console.info("You have successfully created a team profile.")
+        writeToFile(team);
         return
     }
 };
@@ -146,6 +148,12 @@ function createEngineerProfile (){
                 console.info(team)
                 determineUserChoice(response.member);
             })
+};
+
+function writeToFile(team){
+    fs.writeFile("./dist/index.html", generateHTML(team), (err)=> {
+        err ? console.log(err) : console.log("Successfully Generated HTML file");
+    })
 };
 
 createManagerProfile();
