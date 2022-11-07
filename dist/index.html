@@ -1,9 +1,4 @@
-
-function generateHTML (team) {
-
-    let cards = [];
-
-    let htmlHeader = `<!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -16,147 +11,101 @@ function generateHTML (team) {
     <header>
         <h1 class="p-2" style="text-align:center;">Team Profile Generator</h1>
     </header>
-    <div class="container w-75 d-flex flex-wrap p-3" style="justify-content:center;">`;
-
-    let htmlFooter = `</div>
-
-    </body>
-    <script src="https://kit.fontawesome.com/178167676b.js" crossorigin="anonymous"></script>
-    </html>`;
-
-    for(i=0; i < team.length; i++){
-        if(team[i].getRole()=== "Manager"){
-            const managerCard = generateManagerCard(team[i]);
-            cards.push(managerCard);
-        }else if(team[i].getRole() === "Engineer"){
-           const engineerCard = generateEngineerCard(team[i]);
-           cards.push(engineerCard);
-        }else if(team[i].getRole() === "Intern"){
-           const internCard = generateInternCard(team[i]);
-           cards.push(internCard);
-        }
-    }
-
-    return htmlHeader + cards.join(" ") + htmlFooter
-};
-
-function generateManagerCard(employee){
-
-    let firstInitial = employee.firstName.substring(0,1).toUpperCase();
-    let secondInitial = employee.lastName.substring(0,1).toUpperCase();
-
-  return `<div class="card shadow m-2" style = "min-width: 17rem;">
+    <div class="container w-75 d-flex flex-wrap p-3" style="justify-content:center;"><div class="card shadow m-2" style = "min-width: 17rem;">
     <div class="card-header p-3" style="background-color:white;">
         <div class="d-flex profile-picture rounded-circle" style="background-color:rgb(250, 203, 110); width:80px; height:80px; margin: 6px auto; justify-content: center; align-items: center;">
-            <p style="font-size:1.75em; font-weight:bold; color: rgb(165, 132, 85) ;margin-top:14px;">${firstInitial + secondInitial}</p>
+            <p style="font-size:1.75em; font-weight:bold; color: rgb(165, 132, 85) ;margin-top:14px;">CA</p>
         </div>
-        <p class="text-center" style="margin-top:8px; font-weight:bold;">${employee.firstName + "\u00A0" + employee.lastName}</p>
-        <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">${employee.getRole()}</p>
+        <p class="text-center" style="margin-top:8px; font-weight:bold;">Cesar Alvarez</p>
+        <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">Manager</p>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-regular fa-envelope fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px; padding-bottom:16px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">Email:</p>
-                <a href="mailto:${employee.email}">${employee.email}</a>
+                <a href="mailto:cesaralvarez@gmail.com">cesaralvarez@gmail.com</a>
             </div>
         </li>
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-regular fa-user fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">ID:</p>
-                <p>${employee.id}</p>
+                <p>0333</p>
             </div>
         </li>
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-solid fa-building fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">Office Number:</p>
-                <p>${employee.getOfficeNumber()}</p>
+                <p>012</p>
             </div>
         </li>
       </ul>
-</div>`
-
-};
-
-function generateEngineerCard(employee){
-
-    let firstInitial = employee.firstName.substring(0,1).toUpperCase();
-    let secondInitial = employee.lastName.substring(0,1).toUpperCase();
-    
-    return `<div class="card shadow m-2" style = "min-width: 17rem;">
+</div> <div class="card shadow m-2" style = "min-width: 17rem;">
     <div class="card-header p-3" style="background-color:white;">
         <div class="d-flex profile-picture rounded-circle" style="background-color:rgb(206, 252, 255); width:80px; height:80px; margin: 6px auto; justify-content: center; align-items: center;">
-        <p style="font-size:1.75em; font-weight:bold; color: rgb(31, 119, 119) ;margin-top:14px;">${firstInitial + secondInitial}</p>
+        <p style="font-size:1.75em; font-weight:bold; color: rgb(31, 119, 119) ;margin-top:14px;">KM</p>
         </div>
-        <p class="text-center" style="margin-top:8px; font-weight:bold;">${employee.firstName + "\u00A0" + employee.lastName}</p>
-        <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">${employee.getRole()}</p>
+        <p class="text-center" style="margin-top:8px; font-weight:bold;">Ken Matthews</p>
+        <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">Engineer</p>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-regular fa-envelope fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px; padding-bottom:16px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">Email:</p>
-                <a href="mailto:${employee.email}">${employee.email}</a>
+                <a href="mailto:kenmatthews@gmail.com">kenmatthews@gmail.com</a>
             </div>
         </li>
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-regular fa-user fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">ID:</p>
-                <p>${employee.id}</p>
+                <p>0444</p>
             </div>
         </li>
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-solid fa-code-compare fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">GitHub:</p>
-                <a href="https://github.com/${employee.github}" target="_blank">${employee.github}</a>
+                <a href="https://github.com/kmatt" target="_blank">kmatt</a>
             </div>
         </li>
       </ul>
-</div>`
-}
-
-function generateInternCard(employee){
-
-    let firstInitial = employee.firstName.substring(0,1).toUpperCase();
-    let secondInitial = employee.lastName.substring(0,1).toUpperCase();
-
-    return `<div class="card shadow m-2" style = "min-width: 17rem;">
+</div> <div class="card shadow m-2" style = "min-width: 17rem;">
     <div class="card-header p-3" style="background-color:white;">
         <div class="d-flex profile-picture rounded-circle" style="background-color:rgb(228, 231, 231); width:80px; height:80px; margin: 6px auto; justify-content: center; align-items: center;">
-        <p style="font-size:1.75em; font-weight:bold; color: rgb(140, 143, 143) ;margin-top:14px;">${firstInitial + secondInitial}</p>
+        <p style="font-size:1.75em; font-weight:bold; color: rgb(140, 143, 143) ;margin-top:14px;">ST</p>
         </div>
-        <p class="text-center" style="margin-top:8px; font-weight:bold;">${employee.firstName + "\u00A0" + employee.lastName}</p>
-        <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">${employee.getRole()}</p>
+        <p class="text-center" style="margin-top:8px; font-weight:bold;">Stephanie Thomas</p>
+        <p class="text-center" style="margin-top:-18px; font-size:0.95em; color:gray;">Intern</p>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-regular fa-envelope fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px; padding-bottom:16px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">Email:</p>
-                <a href="mailto:${employee.email}">${employee.email}</a>
+                <a href="mailto:stephthomas@gmail.com">stephthomas@gmail.com</a>
             </div>
         </li>
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-regular fa-user fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">ID:</p>
-                <p>${employee.id}</p>
+                <p>0555</p>
             </div>
         </li>
         <li class="list-group-item p-2 m-0 d-flex" style="align-items:center;">
             <i class="fa-solid fa-building-columns fa-lg" style="margin:0px 8px;"></i>
             <div style="margin-left:10px;">
                 <p style="padding-top: 8px; margin-bottom:-3px; color:gray; font-size:0.95em;">University:</p>
-                <p>${employee.school}</p>
+                <p>University of Houston</p>
             </div>
         </li>
       </ul>
-</div>`
+</div></div>
 
-}
-
-module.exports = generateHTML;
+    </body>
+    <script src="https://kit.fontawesome.com/178167676b.js" crossorigin="anonymous"></script>
+    </html>
